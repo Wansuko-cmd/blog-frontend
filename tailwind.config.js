@@ -6,6 +6,7 @@ module.exports = {
         background: '#F3F3F3',
         card: '#F9F9F9',
         default: '#3E3E3E',
+        thin: '#808080',
       }
     },
   },

@@ -7,7 +7,7 @@ interface BackCardProps {
 
 const BaseCard = (props: BackCardProps) => {
     return (
-        <div className={`bg-background rounded-md shadow-md ${props.className}`}>
+        <div className={`bg-card rounded-lg overflow-hidden shadow-lg border border-gray-400 ${props.className}`}>
             { props.children }
         </div>
     )
