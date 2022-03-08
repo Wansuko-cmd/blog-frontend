@@ -1,10 +1,11 @@
 import type {GetServerSideProps, InferGetServerSidePropsType, NextPage} from 'next'
-import BaseCard from "../components/common/BaseCard";
 import IndexArticleCard from "../components/index/article/IndexArticleCard";
 import IndexArticlesHeading from "../components/index/article/IndexArticlesHeading";
 import LayoutIntroductionCard from "../components/layout/sidebar/LayoutIntroductionCard";
-import ArticleRepositoryImpl from "../repositories/article/ArticleRepositoryImpl";
 import Article from "../models/article/Article";
+import {container} from "../di/Registry";
+import GetArticleUseCase from "../usecase/article/get/GetArticleUseCase";
+import UseCaseTypes from "../di/UseCaseTypes";
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -30,7 +31,12 @@ const Home: NextPage<Props> = (props) => {
 export default Home
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const articleRepository = new ArticleRepositoryImpl()
-    const articles: Article[] = await articleRepository.getAll().then((data) => JSON.parse(JSON.stringify(data)))
+    const getArticleUseCase: GetArticleUseCase = container.resolve<GetArticleUseCase>(UseCaseTypes.GetArticleUseCase)
+    const articles: Article[] = await getArticleUseCase.getAll()
+        .then((articles) =>
+            articles.map((article) =>
+                article.toJson()
+            )
+        )
     return { props: { articles: articles } }
 }

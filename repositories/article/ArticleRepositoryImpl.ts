@@ -2,7 +2,9 @@ import ArticleRepository from "../../models/article/ArticleRepository";
 import Article from "../../models/article/Article";
 import axios from "axios";
 import ArticleResponse from "./ArticleResponse";
+import {injectable} from "tsyringe";
 
+@injectable()
 class ArticleRepositoryImpl implements ArticleRepository {
     async getAll(): Promise<Article[]> {
         return await axios.get<ArticleResponse[]>("http://localhost:8000/articles")

@@ -1,28 +1,17 @@
 class Article {
-    id: string
-    thumbnailPath: string
-    title: string
-    body: string
-    goodCount: number
-    createdAt: string
-    modifiedAt: string
+
+    public thumbnailPath: string
 
     constructor(
-        id: string,
+        public id: string,
         thumbnailPath: string | null,
-        title: string,
-        body: string,
-        goodCount: number,
-        createdAt: string,
-        modifiedAt: string,
+        public title: string,
+        public body: string,
+        public goodCount: number,
+        public createdAt: string,
+        public modifiedAt: string,
     ) {
-        this.id = id
         this.thumbnailPath = thumbnailPath ?? ""
-        this.title = title
-        this.body = body
-        this.goodCount = goodCount
-        this.createdAt = createdAt
-        this.modifiedAt = modifiedAt
     }
 }
 
