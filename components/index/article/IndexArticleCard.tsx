@@ -1,15 +1,15 @@
 import Image from 'next/image'
 import BaseCard from "../../common/BaseCard";
-import ModifiedAt from "../common/ModifiedAt";
+import ModifiedAt from "../../common/ModifiedAt";
 
-interface ArticleCardProps{
+interface IndexArticleCardProps{
     src: string
     alt: string
     title: string
     modifiedAt: string
 }
 
-const ArticleCard = (props: ArticleCardProps) => {
+const IndexArticleCard = (props: IndexArticleCardProps) => {
     return (
         <>
             <BaseCard className='w-96 h-72'>
@@ -23,4 +23,4 @@ const ArticleCard = (props: ArticleCardProps) => {
     )
 }
 
-export default ArticleCard
+export default IndexArticleCard
