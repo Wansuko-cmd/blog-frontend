@@ -15,6 +15,10 @@ class ArticleUseCaseModel {
         return JSON.parse(JSON.stringify(this))
     }
 
+    static toJson(articles: ArticleUseCaseModel[]) {
+        return articles.map((article) => article.toJson())
+    }
+
     static fromArticle(article: Article) {
         return new ArticleUseCaseModel(
             article.id,
