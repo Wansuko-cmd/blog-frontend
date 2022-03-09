@@ -11,12 +11,10 @@ class ArticleUseCaseModel {
         public modifiedAt: string,
     ){}
 
-    toJson() {
-        return JSON.parse(JSON.stringify(this))
-    }
-
-    static toJson(articles: ArticleUseCaseModel[]) {
-        return articles.map((article) => article.toJson())
+    static toJson(target: ArticleUseCaseModel): any
+    static toJson(target: ArticleUseCaseModel[]): any
+    static toJson(target: any) {
+        return JSON.parse(JSON.stringify(target))
     }
 
     static fromArticle(article: Article) {
