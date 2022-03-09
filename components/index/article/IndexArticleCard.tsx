@@ -12,7 +12,7 @@ interface IndexArticleCardProps{
 const IndexArticleCard = (props: IndexArticleCardProps) => {
     return (
         <>
-            <BaseCard className='w-96 h-72'>
+            <BaseCard>
                 <Image src={props.src} alt={props.alt} width={400} height={200}/>
                 <div className='m-4 mt-2'>
                     <div className='text-2xl break-words'>{props.title}</div>

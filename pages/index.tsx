@@ -6,6 +6,8 @@ import {container} from "../di/Registry";
 import GetArticleUseCase from "../usecase/article/get/GetArticleUseCase";
 import UseCaseTypes from "../di/UseCaseTypes";
 import ArticleUseCaseModel from "../usecase/article/ArticleUseCaseModel";
+import Link from 'next/link';
+import BaseCard from "../components/common/BaseCard";
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -14,12 +16,23 @@ const Home: NextPage<Props> = (props) => {
     return (
         <>
             <IndexArticlesHeading text='Title'/>
-            {props.articles?.map((article: ArticleUseCaseModel, index: number) => (
-                <div key={index} className='m-5'>
-                    <IndexArticleCard src='/dev/Kotlin.png' alt='kotlin' title={article.title} modifiedAt={article.modifiedAt}/>
+            <div className='grid grid-cols-4 gap-40'>
+                <div className='col-span-3 grid grid-cols-2 gap-40 mx-40'>
+                    {props.articles?.map((article: ArticleUseCaseModel, index: number) => (
+                        <div key={index} className='col-span-1 m-5'>
+                            <Link passHref={true} href={`articles/${article.id}`}>
+                                <a>
+                                    <IndexArticleCard src='/dev/Kotlin.png' alt='kotlin' title={article.title} modifiedAt={article.modifiedAt}/>
+                                </a>
+                            </Link>
+                        </div>
+                    ))}
                 </div>
-            ))}
-            <LayoutIntroductionCard/>
+                <LayoutIntroductionCard className='col-span-1'/>
+            </div>
+
+
+
         </>
     )
 }

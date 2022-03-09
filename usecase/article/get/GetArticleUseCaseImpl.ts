@@ -17,6 +17,11 @@ class GetArticleUseCaseImpl implements GetArticleUseCase {
                 )
             );
     }
+
+    async getById(id: string): Promise<ArticleUseCaseModel> {
+        return await this.articleRepository.getById(id)
+            .then((article) => ArticleUseCaseModel.fromArticle(article))
+    }
 }
 
 export default GetArticleUseCaseImpl

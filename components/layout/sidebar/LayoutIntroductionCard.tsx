@@ -2,10 +2,14 @@ import Image from 'next/image'
 import Link from 'next/link';
 import BaseCard from "../../common/BaseCard";
 
-const LayoutIntroductionCard = () => {
+interface LayoutIntroductionCardProps {
+    className: string | null
+}
+
+const LayoutIntroductionCard = (props: LayoutIntroductionCardProps) => {
     return (
         <>
-            <BaseCard className='w-96 p-5'>
+            <BaseCard className={props.className ?? ""}>
                 <div className='flex'>
                     <Image className='rounded-full' src='/img/バグリー犬.jpg' alt='バグリー犬' width={150} height={150} />
                     <div>
